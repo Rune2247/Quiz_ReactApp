@@ -1,5 +1,5 @@
 
-import QuizPage from "./pages/quizzPage";
+import QuizPage from "./Components/quizzPage";
 
 function App() {
   return (
