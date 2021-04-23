@@ -1,0 +1,32 @@
+.quizPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 85% + 45px;
+}
+.quizContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.quistion{
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    max-width: 50%;
+    margin-top: 50px;
+    padding: 30px;
+
+    flex-direction: column;
+
+    background-color: lightgray;
+    border: 3px solid black;
+    
+    box-shadow: 1px 1px 8px black;
+
+    border: 1px solid black;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
+import '../styles/quiz.css'
+
 
 function QuizzPage() {
     const [qusetion, setqusetion] = useState([]);
     const [answerList, setanswerList] = useState([]);
+    const [correctAnswer, setcorrectAnwer] = useState();
 
 
     //useEffect question
@@ -25,29 +28,49 @@ function QuizzPage() {
 
 
 
+    function answerPost(questionid, answerid) {
+
+        console.log(questionid)
+        console.log(answerid);
+
+        Axios.post("http://localhost:8099/questions/" + questionid + "/answer/" + answerid, {
+            answerid: answerid,
+            questionid: questionid
+        }).then(function response(res) {
+            setcorrectAnwer(res.data)
+
+            console.log(res.data);
+
+        })
+
+
+    }
 
 
     return <div className="quizPage">
         <div className="quizContainer">
 
-            <div>
+            <div className="quistion">
 
-                <h1> {qusetion.category}</h1>
-                <p>{qusetion.field}</p>
-                <h1>The quistion is: {qusetion.question}</h1>
-                <div>
+                <h2>category: {qusetion.category}</h2>
+                <p>field: {qusetion.field}</p>
+                <h3>The quistion is: {qusetion.question}</h3>
+                <div className="answers">
                     {
-                        answerList.map((value, key) => {
+                        answerList.map((value) => {
                             return (
                                 <div>
                                     <p>{value.answer}</p>
-
                                     <button onClick={() => { answerPost(qusetion.id, value.id) }}>Tryk for svar</button>
 
                                 </div>)
                         })
                     }
                 </div>
+                <h1>{correctAnswer != null ? correctAnswer.correctAnswer + "!" : ""}</h1>
+                <p>{correctAnswer != null ? correctAnswer.explanation.explanation + "" : ""}</p>
+                <p>{correctAnswer != null ? correctAnswer.explanation.sourceUrl + "" : ""}</p>
+                <div>{correctAnswer != null ? <button onClick={() => { newQuistion() }}>Next Quistion!</button> : ""}</div>
             </div>
 
 
@@ -55,20 +78,8 @@ function QuizzPage() {
 
     </div>
 }
-
-function answerPost(questionid, answerid) {
-
-    console.log(questionid)
-    console.log(answerid);
-
-    Axios.post("http://localhost:8099/questions/" + questionid + "/answer/" + answerid, {
-        answerid: answerid,
-        questionid: questionid
-    }).then(function response(res) {
-        console.log(res.data);
-    })
-
-
+function newQuistion() {
+    window.location.reload();
 }
 
 export default QuizzPage
