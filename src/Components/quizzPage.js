@@ -54,7 +54,7 @@ function QuizzPage() {
 
                 <h2>category: {qusetion.category}</h2>
                 <p>field: {qusetion.field}</p>
-                <h3>The quistion is: {qusetion.question}</h3>
+                <h3>The question is: {qusetion.question}</h3>
                 <div className="answers">
                     {
                         answerList.map((value) => {
@@ -69,7 +69,7 @@ function QuizzPage() {
                 <h1>{correctAnswer != null ? correctAnswer.correctAnswer + "!" : ""}</h1>
                 <p>{correctAnswer != null ? correctAnswer.explanation.explanation + "" : ""}</p>
                 <p>{correctAnswer != null ? correctAnswer.explanation.sourceUrl + "" : ""}</p>
-                <div>{correctAnswer != null ? <button onClick={() => { newQuistion() }}>Next Quistion!</button> : ""}</div>
+                <div>{correctAnswer != null ? <button onClick={() => { newQuistion() }}>Next Question!</button> : ""}</div>
             </div>
 
 
