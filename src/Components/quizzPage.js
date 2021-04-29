@@ -27,7 +27,7 @@ function QuizzPage() {
     }, [])
 
 
-
+    // useEffect for Post logic
     function answerPost(questionid, answerid) {
 
         console.log(questionid)
@@ -62,7 +62,6 @@ function QuizzPage() {
                                 <div>
                                     <p>{value.answer}</p>
                                     <button onClick={() => { answerPost(qusetion.id, value.id) }}>Tryk for svar</button>
-
                                 </div>)
                         })
                     }
@@ -78,6 +77,7 @@ function QuizzPage() {
 
     </div>
 }
+
 function newQuistion() {
     window.location.reload();
 }
